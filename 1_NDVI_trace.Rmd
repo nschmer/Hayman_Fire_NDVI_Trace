@@ -2,7 +2,8 @@
 title: "NDVI Trace in Hayman Fire"
 author: "Matthew Ross"
 date: "9/5/2019"
-output: html_document
+output: pdf_document
+bibliography: cite.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +17,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Hayman Fire
 
 In 2002 there was a large fire in central Colorado. This analysis is meant
-to highlight how the fire altered vegetation in the area.
+to highlight how the fire altered vegetation in the area. Here we also 
+compare the data to data in the Sierra Nevada [@bradshaw2003fire]. 
 
 
 ### Data read

@@ -31,13 +31,26 @@ full_long <- rbind(ndvi,ndmi,ndsi) %>%
   gather(key='site',value='value',-DateTime,-data) %>%
   filter(!is.na(value))
 
+
 ##### Question 1 #####
 #1 What is the correlation between NDVI and NDMI? - here I want you to
 #convert the full_long dataset in to a wide dataset using the 
 #function "spread" and then make a plot that shows the correlation as a
 # function of if the site was burned or not
 
-## Your code here
+full_wide <- spread(data=full_long,key='data',value='value') %>%
+  filter_if(is.numeric,all_vars(!is.na(.))) %>%
+  mutate(month = month(DateTime),
+         year = year(DateTime))
+
+summer_only <- filter(full_wide,month %in% c(6,7,8,9))
+
+ggplot(summer_only,aes(x=ndmi,y=ndvi,color=site)) + 
+  geom_point() + 
+  theme_few() + 
+  scale_color_few() + 
+  theme(legend.position=c(0.8,0.8))
+
 
 ## End Code for Question 1 -----------
 
